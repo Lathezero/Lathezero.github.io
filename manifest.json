@@ -1,0 +1,9 @@
+{
+  "short_name": "我的博客",
+  "name": "个人博客网站",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+} 
