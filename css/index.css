@@ -2425,6 +2425,41 @@ figure.highlight pre .javascript .function {
 #recent-posts .recent-post-item >.recent-post-info > .content {
   -webkit-line-clamp: 2;
 }
+.post-back {
+  margin-bottom: 1rem;
+}
+.post-back .back-btn {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.post-back .back-btn:hover {
+  background: var(--btn-hover-color);
+}
+.post-back .back-btn i {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
 #article-container .shuoshuo-item {
   margin-bottom: 20px;
   padding: 35px 30px 30px;
@@ -2607,6 +2642,25 @@ figure.highlight pre .javascript .function {
 }
 #aside-content .card-info .card-info-social-icons {
   margin: 6px 0 -6px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
 }
 #aside-content .card-info .card-info-social-icons .social-icon {
   margin: 0 10px;
@@ -4729,6 +4783,42 @@ figure.highlight pre .javascript .function {
   #rightside #hide-aside-btn {
     display: none;
   }
+}
+#rightside #go-up .scroll-percent {
+  display: none;
+}
+#rightside #go-up.show-percent .scroll-percent {
+  display: block;
+}
+#rightside #go-up.show-percent .scroll-percent + i {
+  display: none;
+}
+#rightside #go-up:hover .scroll-percent {
+  display: none;
+}
+#rightside #go-up:hover .scroll-percent + i {
+  display: block;
+}
+#rightside #go-back i {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
 }
 #sidebar #menu-mask {
   position: fixed;

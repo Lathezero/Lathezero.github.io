@@ -64,11 +64,11 @@
     <category term="入门教程" scheme="https://lathezero.github.io/categories/%E6%95%99%E7%A8%8B%E6%8C%87%E5%8D%97/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
     
     
-    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="MySQL" scheme="https://lathezero.github.io/tags/MySQL/"/>
     
     <category term="数据库" scheme="https://lathezero.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -97,9 +97,9 @@
     <category term="环境配置" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
     
-    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="MySQL" scheme="https://lathezero.github.io/tags/MySQL/"/>
+    
+    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     <category term="phpstudy" scheme="https://lathezero.github.io/tags/phpstudy/"/>
     
@@ -119,11 +119,11 @@
     
     
     
+    <category term="问题解决" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
     <category term="前端开发" scheme="https://lathezero.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     <category term="微信小程序" scheme="https://lathezero.github.io/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
-    <category term="问题解决" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     <category term="UI适配" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/UI%E9%80%82%E9%85%8D/"/>
     
@@ -157,11 +157,11 @@
     <category term="构建工具" scheme="https://lathezero.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
     
     
+    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
     <category term="Maven" scheme="https://lathezero.github.io/tags/Maven/"/>
     
     <category term="Java" scheme="https://lathezero.github.io/tags/Java/"/>
-    
-    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     <category term="项目管理" scheme="https://lathezero.github.io/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
     
