@@ -75,8 +75,10 @@ search:
 # 评论系统
 comments:
   use: gitalk
-  text: true
   count: true
+  lazyload: true
+  # 添加评论预加载
+  preload: false
 
 # 文章版权声明
 post_copyright:
@@ -125,7 +127,8 @@ busuanzi:
 # 分享功能
 share:
   enable: true
-  sites: facebook,twitter,wechat,weibo
+  sites: facebook,twitter,weibo,qq,wechat
+  img: /img/avatar.jpg
 
 # 赞赏功能
 reward:
@@ -148,6 +151,9 @@ pwa:
 # 图片懒加载
 lazyload:
   enable: true
+  loading_img: /img/loading.gif
+  onlypost: false
+  blur: true
 
 # 图片放大
 fancybox: true 
@@ -180,3 +186,24 @@ rightside_item_order:
   enable: true
   hide: readmode,translate,darkmode,hideAside
   show: toc,chat,comment,back  # 添加 back
+
+# 开启图片压缩
+image_minifier:
+  enable: true
+  jpg:
+    quality: 80
+  webp:
+    quality: 80
+
+# 添加页面预加载
+instantpage: true
+
+# 优化移动端体验
+mobile_layout: 
+  header_height: 280px
+  sidebar_width: 75%
+
+# 添加返回顶部平滑滚动
+scroll_to_top:
+  enable: true
+  smooth: true

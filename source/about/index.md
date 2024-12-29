@@ -30,7 +30,7 @@ type: "about"
 
 ### 📫 联系方式
 
-- GitHub: [lathezero](https://github.com/lathezero)
+- GitHub: [Lathezero](https://github.com/lathezero)
 - Email: [linzifei0127@outlook.com](mailto:linzifei0127@outlook.com)
 
 > 欢迎交流学习，一起进步！ 

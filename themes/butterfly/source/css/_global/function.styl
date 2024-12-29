@@ -278,3 +278,15 @@ if hexo-config('avatar.effect') == true
 
   100%
     transform: translateX(0)
+
+// 添加键盘焦点样式
+*:focus-visible {
+  outline: 2px solid $light-blue
+  outline-offset: 2px
+}
+
+// 提高文本对比度
+:root {
+  --text-color: #333
+  --text-highlight-color: #222
+}
