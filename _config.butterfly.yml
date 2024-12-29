@@ -1,0 +1,170 @@
+# 导航菜单配置
+menu:
+  首页: / || fas fa-home
+  归档: /archives/ || fas fa-archive
+  标签: /tags/ || fas fa-tags
+  分类: /categories/ || fas fa-folder-open
+  关于: /about/ || fas fa-heart
+
+# 网站图标
+favicon: /img/butterfly-icon.png
+
+# 头像
+avatar:
+  img: /img/avatar.jpeg
+  effect: true
+
+# 代码块设置
+highlight_theme: mac  # 代码高亮主题
+code_blocks:
+  copy: true        # 复制按钮
+  theme: light
+  macStyle: true
+
+# 文章封面
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+
+# 社交图标
+social:
+  Github: https://github.com/lathezero || fab fa-github
+  E-Mail: mailto:linzifei0127@outlook.com || fas fa-envelope
+  # 微博: https://weibo.com/your_weibo_username || fab fa-weibo
+
+# 侧边栏设置
+aside:
+  enable: true
+  mobile: true
+  position: right
+  card_author:
+    enable: true
+    description: 分享技术文章和生活感悟
+    button:
+      enable: true
+      icon: fab fa-github
+      text: Follow Me
+      link: https://github.com/lathezero
+  card_categories:
+    enable: true
+    limit: 8
+  card_tags:
+    enable: true
+    limit: 40
+  card_archives:
+    enable: true
+  card_webinfo:
+    enable: false  # 关闭网站信息卡片
+
+# 页脚设置
+footer:
+  owner:
+    enable: true
+    since: 2024
+  custom_text: 自定义页脚文本
+
+# 搜索系统
+search:
+  path: search.xml
+  field: post
+  content: true
+  template: ./search.xml 
+
+# 评论系统
+comments:
+  use: gitalk
+  text: true
+  count: true
+
+# 文章版权声明
+post_copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# 相关文章推荐
+related_post:
+  enable: true
+  limit: 6  # 显示数量
+
+# 文章目录
+toc:
+  enable: true
+  number: true
+  style_simple: false 
+
+# 网站背景
+background: url(/img/bg.jpg)
+
+# 页面加载动画
+preloader:
+  enable: true
+
+# 鼠标点击效果
+click_heart:
+  enable: true
+
+# 字数统计
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+
+# 网站访问统计
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true 
+
+# 分享功能
+share:
+  enable: true
+  sites: facebook,twitter,wechat,weibo
+
+# 赞赏功能
+reward:
+  enable: true
+  QR_code:
+    - img: /img/wechat.jpg
+      text: 微信
+    - img: /img/alipay.jpg
+      text: 支付宝 
+
+# Open Graph meta tags
+Open_Graph_meta:
+  enable: true
+
+# PWA 支持
+pwa:
+  enable: false  # 关闭 PWA 功能
+  manifest: /manifest.json 
+
+# 图片懒加载
+lazyload:
+  enable: true
+
+# 图片放大
+fancybox: true 
+
+# 阅读模式
+readmode: true
+
+# 深色模式
+darkmode:
+  enable: true
+  button: true
+
+# 返回顶部按钮
+scroll_to_top: true 
+
+# gitalk 配置
+gitalk:
+  client_id: Ov23liQDq7kxNXBhrNw6
+  client_secret: 3ff7d815acd47d09e4a00777a9568702da06c30f
+  repo: blog-comments
+  owner: Lathezero
+  admin: ['Lathezero']
+  language: zh-CN
+  distractionFreeMode: false 
