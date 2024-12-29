@@ -167,7 +167,9 @@ darkmode:
   button: true
 
 # 返回顶部按钮
-scroll_to_top: true 
+scroll_to_top:
+  enable: true
+  smooth: true
 
 # gitalk 配置
 gitalk:
@@ -202,8 +204,3 @@ instantpage: true
 mobile_layout: 
   header_height: 280px
   sidebar_width: 75%
-
-# 添加返回顶部平滑滚动
-scroll_to_top:
-  enable: true
-  smooth: true
