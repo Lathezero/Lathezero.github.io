@@ -175,3 +175,8 @@ gitalk:
 
 # 滚动百分比
 rightside_scroll_percent: true
+
+rightside_item_order:
+  enable: true
+  hide: readmode,translate,darkmode,hideAside
+  show: toc,chat,comment,back  # 添加 back

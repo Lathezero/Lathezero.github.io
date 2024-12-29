@@ -920,4 +920,8 @@ document.addEventListener('DOMContentLoaded', () => {
       fn()
     })
   })
+
+  document.getElementById('go-back') && document.getElementById('go-back').addEventListener('click', () => {
+    window.history.back()
+  })
 })
