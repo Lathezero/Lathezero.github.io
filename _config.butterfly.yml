@@ -92,7 +92,10 @@ related_post:
 toc:
   enable: true
   number: true
-  style_simple: false 
+  style_simple: false
+  expand: false
+  scroll_percent: true
+  max_depth: 6
 
 # 网站背景
 background: url(/img/bg.jpg)
@@ -125,7 +128,7 @@ share:
 
 # 赞赏功能
 reward:
-  enable: true
+  enable: false  # 已经禁用了赞赏功能
   QR_code:
     - img: /img/wechat.jpg
       text: 微信
@@ -149,7 +152,7 @@ lazyload:
 fancybox: true 
 
 # 阅读模式
-readmode: true
+readmode: true  # 重新启用阅读模式
 
 # 深色模式
 darkmode:
@@ -168,3 +171,6 @@ gitalk:
   admin: ['Lathezero']
   language: zh-CN
   distractionFreeMode: false 
+
+# 滚动百分比
+rightside_scroll_percent: true  # 重新启用滚动百分比 
