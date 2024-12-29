@@ -55,14 +55,15 @@ aside:
   card_archives:
     enable: true
   card_webinfo:
-    enable: false  # 关闭网站信息卡片
+    enable: false
 
 # 页脚设置
 footer:
   owner:
     enable: true
     since: 2024
-  custom_text: 自定义页脚文本
+  custom_text: "欢迎光临！"
+  copyright: true
 
 # 搜索系统
 search:
@@ -128,7 +129,7 @@ share:
 
 # 赞赏功能
 reward:
-  enable: false  # 已经禁用了赞赏功能
+  enable: false
   QR_code:
     - img: /img/wechat.jpg
       text: 微信
@@ -152,7 +153,7 @@ lazyload:
 fancybox: true 
 
 # 阅读模式
-readmode: true  # 重新启用阅读模式
+readmode: true
 
 # 深色模式
 darkmode:
@@ -173,4 +174,4 @@ gitalk:
   distractionFreeMode: false 
 
 # 滚动百分比
-rightside_scroll_percent: true  # 重新启用滚动百分比 
+rightside_scroll_percent: true

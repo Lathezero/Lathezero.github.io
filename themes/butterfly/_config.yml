@@ -265,7 +265,7 @@ noticeOutdate:
 footer:
   owner:
     enable: true
-    since: 2019
+    since: 2024
   custom_text:
   # Copyright of theme and framework
   copyright: true
