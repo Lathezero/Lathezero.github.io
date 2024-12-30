@@ -53,9 +53,9 @@ aside:
     enable: true
     limit: 40
   card_archives:
-    enable: true
-  card_webinfo:
     enable: false
+  card_webinfo:
+    enable: true
 
 # 页脚设置
 footer:
@@ -101,7 +101,7 @@ toc:
   max_depth: 6
 
 # 网站背景
-background: url(/img/bg.jpg)
+# background: url(/img/bg.jpg)
 
 # 页面加载动画
 preloader:
