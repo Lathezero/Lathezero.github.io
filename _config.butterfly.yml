@@ -1,206 +1,212 @@
-# 导航菜单配置
+# 导航菜单配置 - 设置网站顶部导航栏
 menu:
-  首页: / || fas fa-home
-  归档: /archives/ || fas fa-archive
-  标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
-  关于: /about/ || fas fa-heart
+  首页: / || fas fa-home                    # 首页链接和图标
+  归档: /archives/ || fas fa-archive        # 归档页链接和图标
+  标签: /tags/ || fas fa-tags              # 标签页链接和图标
+  分类: /categories/ || fas fa-folder-open  # 分类页链接和图标
+  关于: /about/ || fas fa-heart            # 关于页链接和图标
 
-# 网站图标
+# 网站图标 - 浏览器标签页显示的图标
 favicon: /img/butterfly-icon.png
 
-# 头像
+# 头像设置
 avatar:
-  img: /img/avatar.jpeg
-  effect: true
+  img: /img/avatar.jpeg    # 头像图片路径
+  effect: true            # 头像鼠标悬停效果
 
 # 代码块设置
-highlight_theme: mac  # 代码高亮主题
+highlight_theme: mac      # 代码高亮主题风格
 code_blocks:
-  copy: true        # 复制按钮
-  theme: light
-  macStyle: true
+  copy: true             # 是否显示复制按钮
+  theme: light           # 代码块主题
+  macStyle: true         # 是否使用 macOS 风格
 
-# 文章封面
+# 文章封面图设置
 cover:
-  index_enable: true
-  aside_enable: true
-  archives_enable: true
+  index_enable: true     # 首页文章是否显示封面图
+  aside_enable: true     # 侧边栏是否显示封面图
+  archives_enable: true  # 归档页是否显示封面图
 
-# 社交图标
+# 社交图标 - 侧边栏社交链接
 social:
-  Github: https://github.com/lathezero || fab fa-github
-  E-Mail: mailto:linzifei0127@outlook.com || fas fa-envelope
-  # 微博: https://weibo.com/your_weibo_username || fab fa-weibo
+  Github: https://github.com/lathezero || fab fa-github        # GitHub链接和图标
+  E-Mail: mailto:linzifei0127@outlook.com || fas fa-envelope   # 邮箱链接和图标
 
 # 侧边栏设置
 aside:
-  enable: true
-  mobile: true
-  position: right
+  enable: true           # 是否启用侧边栏
+  mobile: true          # 移动端是否显示侧边栏
+  position: right       # 侧边栏位置
+  
+  # 作者信息卡片
   card_author:
-    enable: true
-    description: 分享技术文章和生活感悟
+    enable: true        # 是否显示作者信息卡片
+    description: 分享技术文章和生活感悟   # 作者描述
     button:
-      enable: true
-      icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/lathezero
+      enable: true      # 是否显示按钮
+      icon: fab fa-github   # 按钮图标
+      text: Follow Me      # 按钮文字
+      link: https://github.com/lathezero   # 按钮链接
+
+  # 分类卡片
   card_categories:
-    enable: true
-    limit: 8
+    enable: true        # 是否显示分类卡片
+    limit: 8            # 显示的分类数量限制
+
+  # 标签卡片
   card_tags:
-    enable: true
-    limit: 40
+    enable: true        # 是否显示标签卡片
+    limit: 40           # 显示的标签数量限制
+
+  # 归档卡片
   card_archives:
-    enable: false
+    enable: false       # 是否显示归档卡片
+
+  # 网站信息卡片
   card_webinfo:
-    enable: true
+    enable: true        # 是否显示网站信息卡片
 
 # 页脚设置
 footer:
   owner:
-    enable: true
-    since: 2024
-  custom_text: "欢迎光临！"
-  copyright: true
+    enable: true        # 是否显示页脚所有者信息
+    since: 2024         # 网站建立年份
+  custom_text: "欢迎光临！"   # 自定义页脚文字
+  copyright: true       # 是否显示版权信息
 
-# 搜索系统
+# 搜索系统设置
 search:
-  path: search.xml
-  field: post
-  content: true
-  template: ./search.xml 
+  path: search.xml      # 搜索数据文件路径
+  field: post          # 搜索范围
+  content: true        # 是否搜索文章内容
+  template: ./search.xml    # 搜索模板
 
 # 评论系统
 comments:
-  use: gitalk
-  count: true
-  lazyload: true
-  # 添加评论预加载
-  preload: false
+  use: gitalk          # 使用 gitalk 评论系统
+  count: true          # 是否显示评论数
+  lazyload: true       # 是否启用懒加载
+  preload: false       # 是否预加载评论
 
 # 文章版权声明
 post_copyright:
-  enable: true
-  license: CC BY-NC-SA 4.0
-  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  enable: true         # 是否启用版权声明
+  license: CC BY-NC-SA 4.0    # 版权协议
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/   # 协议链接
 
 # 相关文章推荐
 related_post:
-  enable: true
-  limit: 6  # 显示数量
+  enable: true         # 是否启用相关文章推荐
+  limit: 6             # 显示数量限制
 
-# 文章目录
+# 文章目录设置
 toc:
-  enable: true
-  number: true
-  style_simple: false
-  expand: false
-  scroll_percent: true
-  max_depth: 6
-
-# 网站背景
-# background: url(/img/bg.jpg)
+  enable: true         # 是否启用目录
+  number: true         # 是否显示编号
+  style_simple: false  # 是否使用简单样式
+  expand: false        # 是否展开目录
+  scroll_percent: true # 是否显示阅读百分比
+  max_depth: 6         # 目录最大深度
 
 # 页面加载动画
 preloader:
-  enable: true
+  enable: true         # 是否启用加载动画
 
 # 鼠标点击效果
 click_heart:
-  enable: true
+  enable: true         # 是否启用点击特效
 
 # 字数统计
 wordcount:
-  enable: true
-  post_wordcount: true
-  min2read: true
-  total_wordcount: true
+  enable: true         # 是否启用字数统计
+  post_wordcount: true # 是否显示文章字数
+  min2read: true       # 是否显示阅读时间
+  total_wordcount: true # 是否显示总字数
 
 # 网站访问统计
 busuanzi:
-  site_uv: true
-  site_pv: true
-  page_pv: true 
+  site_uv: true        # 是否统计访客数
+  site_pv: true        # 是否统计访问量
+  page_pv: true        # 是否统计页面访问量
 
 # 分享功能
 share:
-  enable: true
-  sites: facebook,twitter,weibo,qq,wechat
-  img: /img/avatar.jpg
+  enable: true         # 是否启用分享功能
+  sites: facebook,twitter,weibo,qq,wechat   # 分享平台
+  img: /img/avatar.jpg # 分享图片
 
-# 赞赏功能
+# 赞赏功能 - 文章打赏设置
 reward:
-  enable: false
-  QR_code:
-    - img: /img/wechat.jpg
-      text: 微信
-    - img: /img/alipay.jpg
-      text: 支付宝 
+  enable: false                # 是否启用打赏功能
+  QR_code:                     # 打赏二维码配置
+    - img: /img/wechat.jpg    # 微信支付二维码图片
+      text: 微信              # 微信支付文字说明
+    - img: /img/alipay.jpg    # 支付宝二维码图片
+      text: 支付宝            # 支付宝文字说明
 
-# Open Graph meta tags
+# Open Graph meta tags - 社交媒体分享优化
 Open_Graph_meta:
-  enable: true
+  enable: true                # 是否启用 Open Graph 标签
 
-# PWA 支持
+# PWA 支持 - 渐进式 Web 应用配置
 pwa:
-  enable: false  # 关闭 PWA 功能
-  manifest: /manifest.json 
+  enable: false               # 是否启用 PWA 功能
+  manifest: /manifest.json    # PWA 配置文件路径
 
-# 图片懒加载
+# 图片懒加载 - 优化页面加载速度
 lazyload:
-  enable: true
-  loading_img: /img/loading.gif
-  onlypost: false
-  blur: true
+  enable: true               # 是否启用图片懒加载
+  loading_img: /img/loading.gif  # 加载占位图
+  onlypost: false           # 是否只对文章页面生效
+  blur: true                # 是否启用模糊效果
 
-# 图片放大
-fancybox: true 
+# 图片放大 - 点击图片查看大图
+fancybox: true              # 是否启用 fancybox 图片放大
 
-# 阅读模式
-readmode: true
+# 阅读模式 - 沉浸式阅读体验
+readmode: true              # 是否启用阅读模式
 
-# 深色模式
+# 深色模式 - 网站暗色主题
 darkmode:
-  enable: true
-  button: true
+  enable: true              # 是否启用深色模式
+  button: true             # 是否显示切换按钮
 
 # 返回顶部按钮
 scroll_to_top:
-  enable: true
-  smooth: true
+  enable: true             # 是否启用返回顶部
+  smooth: true            # 是否启用平滑滚动
 
-# gitalk 配置
+# gitalk 配置 - GitHub 评论系统
 gitalk:
-  client_id: Ov23liQDq7kxNXBhrNw6
-  client_secret: 3ff7d815acd47d09e4a00777a9568702da06c30f
-  repo: blog-comments
-  owner: Lathezero
-  admin: ['Lathezero']
-  language: zh-CN
-  distractionFreeMode: false 
+  client_id: Ov23liQDq7kxNXBhrNw6                              # GitHub OAuth App ID
+  client_secret: 3ff7d815acd47d09e4a00777a9568702da06c30f     # GitHub OAuth App Secret
+  repo: blog-comments                                          # 存放评论的仓库
+  owner: Lathezero                                            # 仓库所有者
+  admin: ['Lathezero']                                        # 管理员列表
+  language: zh-CN                                             # 语言设置
+  distractionFreeMode: false                                  # 无干扰模式
 
-# 滚动百分比
-rightside_scroll_percent: true
+# 滚动百分比 - 显示阅读进度
+rightside_scroll_percent: true                                # 是否在返回顶部按钮显示阅读百分比
 
+# 右侧按钮设置 - 自定义右侧功能按钮
 rightside_item_order:
-  enable: true
-  hide: readmode,translate,darkmode,hideAside
-  show: toc,chat,comment,back  # 添加 back
+  enable: true                                               # 是否启用自定义按钮顺序
+  hide: readmode,translate,darkmode,hideAside               # 需要隐藏的按钮
+  show: toc,chat,comment,back                               # 需要显示的按钮
 
-# 开启图片压缩
+# 图片优化 - 图片压缩设置
 image_minifier:
-  enable: true
+  enable: true                                              # 是否启用图片压缩
   jpg:
-    quality: 80
+    quality: 80                                            # JPG 图片压缩质量
   webp:
-    quality: 80
+    quality: 80                                            # WebP 图片压缩质量
 
-# 添加页面预加载
-instantpage: true
+# 添加页面预加载 - 提升页面加载速度
+instantpage: true                                           # 是否启用即时预加载
 
-# 优化移动端体验
+# 移动端优化 - 移动设备显示设置
 mobile_layout: 
-  header_height: 280px
-  sidebar_width: 75%
+  header_height: 280px                                      # 移动端顶部图片高度
+  sidebar_width: 75%                                        # 移动端侧边栏宽度
