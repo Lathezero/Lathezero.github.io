@@ -9,11 +9,19 @@ keywords: CosyVoice
 ---
 
 ```
-conda install -y-c conda-forge pynini==2.1.5
+pip install cython -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ```
 conda install -y -c conda-forge pynini==2.1.5
+```
+
+```
+pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com
+```
+
+```
+python -c"import torch;print(torch.__version_)
 ```
 
 
@@ -24,7 +32,7 @@ CosyVoice 是阿里通义实验室开源的多语言语音合成模型，支持�
 
 ## **本地部署 CosyVoice 的步骤**
 
-### **1. 环境准备**
+### **1. 环境准备**(无需理会)
 
 - **硬件要求**：
   - NVIDIA 显卡，建议显存 6GB 以上。
@@ -59,9 +67,19 @@ CosyVoice 是阿里通义实验室开源的多语言语音合成模型，支持�
    conda activate cosyvoice
    ```
 
-2. 安装依赖库：
+2. 安装前置条件：
 
-   - 修改 `requirements.txt` 文件，将 `onnxruntime-gpu` 替换为 `onnxruntime`。
+   ```
+   pip install cython -i https://pypi.tuna.tsinghua.edu.cn/simple
+   ```
+
+   ```
+   conda install -y -c conda-forge pynini==2.1.5
+   ```
+
+3. 安装依赖库：
+
+   - 修改 `requirements.txt` 文件，删除`onnxruntime`这一行，并将 `onnxruntime-gpu` 后面的条件判断`;`后面一整段删除
 
    - 使用国内镜像加速安装：
 
@@ -73,6 +91,12 @@ CosyVoice 是阿里通义实验室开源的多语言语音合成模型，支持�
 
      ```bash
      pip install torch-2.0.1+cu118-cp38-cp38-win_amd64.whl -i https://pypi.tuna.tsinghua.edu.cn/simple
+     ```
+
+   - 查看`torch`是否正确安装：
+
+     ```
+     python -c"import torch;print(torch.__version_)
      ```
 
 ---
@@ -235,5 +259,3 @@ CosyVoice 是阿里通义实验室开源的多语言语音合成模型，支持�
 - **CosyVoice-300M-Instruct**：适合细粒度控制和情感语音生成。
 - **CosyVoice-ttsfrd**：适合文本规范化处理。
 - **CosyVoice2-0.5B**：适合实时语音合成和高质量语音生成。
-
-如果需要更详细的技术细节或部署方法，可以参考相关文档或视频教程。
