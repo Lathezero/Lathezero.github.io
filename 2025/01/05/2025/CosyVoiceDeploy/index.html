@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CosyVoiceDeploy | Lathezero's Blog</title><meta name="author" content="雷德基洛"><meta name="copyright" content="雷德基洛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CosyVoice 本地部署教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CosyVoiceDeploy">
+<meta property="og:url" content="https://lathezero.github.io/2025/01/05/2025/CosyVoiceDeploy/index.html">
+<meta property="og:site_name" content="Lathezero&#39;s Blog">
+<meta property="og:description" content="CosyVoice 本地部署教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lathezero.github.io/img/avatar.jpeg">
+<meta property="article:published_time" content="2025-01-05T13:30:13.000Z">
+<meta property="article:modified_time" content="2025-01-05T13:36:25.569Z">
+<meta property="article:author" content="雷德基洛">
+<meta property="article:tag" content="模型部署">
+<meta property="article:tag" content="语音合成">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lathezero.github.io/img/avatar.jpeg"><link rel="shortcut icon" href="/img/butterfly-icon.png"><link rel="canonical" href="https://lathezero.github.io/2025/01/05/2025/CosyVoiceDeploy/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CosyVoiceDeploy',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Lathezero's Blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(/img/index.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Lathezero's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">CosyVoiceDeploy</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CosyVoiceDeploy</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-05T13:30:13.000Z" title="发表于 2025-01-05 21:30:13">2025-01-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-05T13:36:25.569Z" title="更新于 2025-01-05 21:36:25">2025-01-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/">模型部署</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/">语音合成</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -y-c conda-forge pynini==2.1.5</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -y -c conda-forge pynini==2.1.5</span><br></pre></td></tr></table></figure>
+
+
+
+<p>CosyVoice 是阿里通义实验室开源的多语言语音合成模型，支持音色克隆、情感控制和跨语种语音合成等功能。以下是一个详细的本地部署教程，帮助你在本地部署并使用 CosyVoice 模型。</p>
+<hr>
+<h2 id="本地部署-CosyVoice-的步骤"><a href="#本地部署-CosyVoice-的步骤" class="headerlink" title="本地部署 CosyVoice 的步骤"></a><strong>本地部署 CosyVoice 的步骤</strong></h2><h3 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1. 环境准备"></a><strong>1. 环境准备</strong></h3><ul>
+<li><strong>硬件要求</strong>：<ul>
+<li>NVIDIA 显卡，建议显存 6GB 以上。</li>
+<li>确保系统路径和文件名不含中文或空格。</li>
+</ul>
+</li>
+<li><strong>软件依赖</strong>：<ul>
+<li><strong>CUDA 和 cuDNN</strong>：用于 GPU 加速。检查并安装与显卡兼容的 CUDA 版本（建议 CUDA 12.x）和对应的 cuDNN 版本。</li>
+<li><strong>Git</strong>：用于克隆代码仓库。</li>
+<li><strong>Miniconda</strong>：用于创建 Python 虚拟环境。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-克隆代码仓库"><a href="#2-克隆代码仓库" class="headerlink" title="2. 克隆代码仓库"></a><strong>2. 克隆代码仓库</strong></h3><ol>
+<li><p>打开命令行窗口，执行以下命令克隆 CosyVoice 仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/FunAudioLLM/CosyVoice.git</span><br><span class="line"><span class="built_in">cd</span> CosyVoice</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果克隆失败，可以尝试多次或使用代理。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="3-创建虚拟环境"><a href="#3-创建虚拟环境" class="headerlink" title="3. 创建虚拟环境"></a><strong>3. 创建虚拟环境</strong></h3><ol>
+<li><p>使用 Miniconda 创建虚拟环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n cosyvoice python=3.8</span><br><span class="line">conda activate cosyvoice</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装依赖库：</p>
+<ul>
+<li><p>修改 <code>requirements.txt</code> 文件，将 <code>onnxruntime-gpu</code> 替换为 <code>onnxruntime</code>。</p>
+</li>
+<li><p>使用国内镜像加速安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果 <code>torch</code> 安装过慢，可以手动下载并安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-2.0.1+cu118-cp38-cp38-win_amd64.whl -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="4-下载模型"><a href="#4-下载模型" class="headerlink" title="4. 下载模型"></a><strong>4. 下载模型</strong></h3><ol>
+<li><p>使用 ModelScope 下载预训练模型：</p>
+<ul>
+<li><p>创建一个 Python 脚本 <code>download_models.py</code>，内容如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> modelscope <span class="keyword">import</span> snapshot_download</span><br><span class="line">snapshot_download(<span class="string">&#x27;iic/CosyVoice-300M&#x27;</span>, local_dir=<span class="string">&#x27;pretrained_models/CosyVoice-300M&#x27;</span>)</span><br><span class="line">snapshot_download(<span class="string">&#x27;iic/CosyVoice-300M-SFT&#x27;</span>, local_dir=<span class="string">&#x27;pretrained_models/CosyVoice-300M-SFT&#x27;</span>)</span><br><span class="line">snapshot_download(<span class="string">&#x27;iic/CosyVoice-300M-Instruct&#x27;</span>, local_dir=<span class="string">&#x27;pretrained_models/CosyVoice-300M-Instruct&#x27;</span>)</span><br><span class="line">snapshot_download(<span class="string">&#x27;iic/CosyVoice-ttsfrd&#x27;</span>, local_dir=<span class="string">&#x27;pretrained_models/CosyVoice-ttsfrd&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python download_models.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果下载速度慢，可以从百度网盘或夸克网盘下载模型并解压到 <code>pretrained_models</code> 目录。</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="5-启动模型"><a href="#5-启动模型" class="headerlink" title="5. 启动模型"></a><strong>5. 启动模型</strong></h3><ol>
+<li><p><strong>内置音色生成</strong>：</p>
+<ul>
+<li><p>在命令行中运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda activate cosyvoice</span><br><span class="line">python webui.py --port 50000 --model_dir pretrained_models/CosyVoice-300M-SFT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开浏览器访问 <code>http://127.0.0.1:50000</code> 使用 Web 界面。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>音色克隆</strong>：</p>
+<ul>
+<li><p>准备一段 3~10 秒的音频作为音色样本。</p>
+</li>
+<li><p>运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python webui.py --port 50001 --model_dir pretrained_models/CosyVoice-300M</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>语气微调</strong>：</p>
+<ul>
+<li><p>使用 <code>CosyVoice-300M-Instruct</code> 模型，支持富文本输入（如 <code>&lt;strong&gt;</code> 强调语气）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python webui.py --port 50002 --model_dir pretrained_models/CosyVoice-300M-Instruct</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="6-常见问题"><a href="#6-常见问题" class="headerlink" title="6. 常见问题"></a><strong>6. 常见问题</strong></h3><ul>
+<li><p><strong>SSLError 或 HTTPSConnectionError</strong>：设置代理端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> http_proxy=http://127.0.0.1:你的代理端口地址 &amp; <span class="built_in">set</span> https_proxy=http://127.0.0.1:你的代理端口地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>模型下载失败</strong>：更新 <code>modelscope</code> 到最新版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install modelscope==1.17.0 -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="7-进阶功能"><a href="#7-进阶功能" class="headerlink" title="7. 进阶功能"></a><strong>7. 进阶功能</strong></h3><ul>
+<li><strong>跨语种语音合成</strong>：输入中文语音，输出其他语言的语音。</li>
+<li><strong>情感控制</strong>：通过富文本标签（如 <code>&lt;laughter&gt;</code>）控制语音情感。</li>
+</ul>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>通过以上步骤，你可以在本地成功部署并使用 CosyVoice 模型。如果需要更详细的教程或遇到问题，可以参考相关文档或视频教程。</p>
+<p>根据搜索结果，以下是 <strong>CosyVoice</strong> 系列模型的详细解释和适用场景：</p>
+<hr>
+<h2 id="1-CosyVoice-300M"><a href="#1-CosyVoice-300M" class="headerlink" title="1. CosyVoice-300M"></a><strong>1. CosyVoice-300M</strong></h2><ul>
+<li><strong>功能</strong>：这是 CosyVoice 的基座模型，支持 <strong>零样本音色克隆</strong> 和 <strong>跨语言语音合成</strong>。</li>
+<li><strong>特点</strong>：<ul>
+<li>仅需 3~10 秒的音频样本，即可生成与目标音色高度相似的语音，包括韵律、情感等细节。</li>
+<li>支持多语言（如中文、英文、日语、粤语、韩语）的语音合成。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li>音色克隆：适用于需要快速复刻特定音色的场景，如虚拟助手、有声读物等。</li>
+<li>跨语言语音合成：输入一种语言的语音，输出另一种语言的语音，同时保留原始音色。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-CosyVoice-300M-SFT"><a href="#2-CosyVoice-300M-SFT" class="headerlink" title="2. CosyVoice-300M-SFT"></a><strong>2. CosyVoice-300M-SFT</strong></h2><ul>
+<li><strong>功能</strong>：这是经过 <strong>SFT（Supervised Fine-Tuning）微调</strong> 的模型，内置了多个预训练音色。</li>
+<li><strong>特点</strong>：<ul>
+<li>支持多种预定义音色（如中文女声、中文男声、日语男声、粤语女声等）。</li>
+<li>在特定任务或领域的语音生成质量上表现更优。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li>内置音色生成：适用于需要快速生成高质量语音的场景，如语音客服、语音播报等。</li>
+<li>多语言支持：支持多种语言的语音合成，适合国际化应用。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-CosyVoice-300M-Instruct"><a href="#3-CosyVoice-300M-Instruct" class="headerlink" title="3. CosyVoice-300M-Instruct"></a><strong>3. CosyVoice-300M-Instruct</strong></h2><ul>
+<li><strong>功能</strong>：这是支持 <strong>细粒度控制</strong> 的模型，允许通过自然语言指令或富文本标签控制语音生成。</li>
+<li><strong>特点</strong>：<ul>
+<li>支持情感、口音、角色风格等细粒度控制。</li>
+<li>内置丰富的指令集，如 <code>&lt;laughter&gt;</code>（笑声）、<code>&lt;strong&gt;</code>（强调）、<code>[breath]</code>（呼吸声）等。</li>
+<li>支持多语言和方言控制（如四川话）。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li>情感语音生成：适用于需要表达特定情感的语音合成，如影视配音、游戏角色语音等。</li>
+<li>指令控制：适合需要动态调整语音风格和情感的场景，如虚拟助手、互动播客等。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-CosyVoice-ttsfrd"><a href="#4-CosyVoice-ttsfrd" class="headerlink" title="4. CosyVoice-ttsfrd"></a><strong>4. CosyVoice-ttsfrd</strong></h2><ul>
+<li><strong>功能</strong>：这是 CosyVoice 的 <strong>文本规范化工具</strong>，用于优化文本到语音的转换效果。</li>
+<li><strong>特点</strong>：<ul>
+<li>提供更好的文本归一化性能，支持多语言文本处理。</li>
+<li>可选的安装包，默认使用 WeTextProcessing 作为替代。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li>文本预处理：适用于需要高质量文本到语音转换的场景，如语音合成系统的前端处理。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-CosyVoice2-0-5B"><a href="#5-CosyVoice2-0-5B" class="headerlink" title="5. CosyVoice2-0.5B"></a><strong>5. CosyVoice2-0.5B</strong></h2><ul>
+<li><strong>功能</strong>：这是 CosyVoice 的升级版本，支持 <strong>流式语音合成</strong> 和 <strong>更高质量的语音生成</strong>。</li>
+<li><strong>特点</strong>：<ul>
+<li>超低延迟：首包合成延迟可低至 150ms，适合实时应用。</li>
+<li>高准确度：在发音错误率上比 CosyVoice 1.0 下降 30%~50%。</li>
+<li>支持双向流式语音合成，适用于实时语音交互场景。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：<ul>
+<li>实时语音合成：适用于需要低延迟语音生成的场景，如语音聊天、实时翻译等。</li>
+<li>高质量语音生成：适合对语音质量要求较高的应用，如影视配音、广告语音等。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><strong>总结</strong></h2><ul>
+<li><strong>CosyVoice-300M</strong>：适合音色克隆和跨语言语音合成。</li>
+<li><strong>CosyVoice-300M-SFT</strong>：适合内置音色生成和多语言语音合成。</li>
+<li><strong>CosyVoice-300M-Instruct</strong>：适合细粒度控制和情感语音生成。</li>
+<li><strong>CosyVoice-ttsfrd</strong>：适合文本规范化处理。</li>
+<li><strong>CosyVoice2-0.5B</strong>：适合实时语音合成和高质量语音生成。</li>
+</ul>
+<p>如果需要更详细的技术细节或部署方法，可以参考相关文档或视频教程。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://lathezero.github.io">雷德基洛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://lathezero.github.io/2025/01/05/2025/CosyVoiceDeploy/">https://lathezero.github.io/2025/01/05/2025/CosyVoiceDeploy/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://lathezero.github.io" target="_blank">Lathezero's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/">模型部署</a><a class="post-meta__tags" href="/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/">语音合成</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/01/02/2025/ThreeTierSchema/" title="分层与解耦"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">分层与解耦</div></div><div class="info-2"><div class="info-item-1">SpringBoot中对三层架构进行分层与解耦</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">雷德基洛</div><div class="author-info-description">分享技术文章和生活感悟</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lathezero"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/lathezero" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:linzifei0127@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/lathezero" target="_blank" title="fab fa-github"><i class="Github"></i></a><a class="social-icon" href="mailto:linzifei0127@outlook.com" target="_blank" title="fas fa-envelope"><i class="E-Mail"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2-CosyVoice-%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">本地部署 CosyVoice 的步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">1. 环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%85%8B%E9%9A%86%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">2. 克隆代码仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.</span> <span class="toc-text">3. 创建虚拟环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">4. 下载模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.</span> <span class="toc-text">5. 启动模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.</span> <span class="toc-text">6. 常见问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%BF%9B%E9%98%B6%E5%8A%9F%E8%83%BD"><span class="toc-number">1.7.</span> <span class="toc-text">7. 进阶功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-CosyVoice-300M"><span class="toc-number">3.</span> <span class="toc-text">1. CosyVoice-300M</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CosyVoice-300M-SFT"><span class="toc-number">4.</span> <span class="toc-text">2. CosyVoice-300M-SFT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CosyVoice-300M-Instruct"><span class="toc-number">5.</span> <span class="toc-text">3. CosyVoice-300M-Instruct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-CosyVoice-ttsfrd"><span class="toc-number">6.</span> <span class="toc-text">4. CosyVoice-ttsfrd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-CosyVoice2-0-5B"><span class="toc-number">7.</span> <span class="toc-text">5. CosyVoice2-0.5B</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 雷德基洛</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎光临！</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-back" type="button" title="返回上一页"><i class="fas fa-arrow-left"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: 'Ov23liQDq7kxNXBhrNw6',
+      clientSecret: '3ff7d815acd47d09e4a00777a9568702da06c30f',
+      repo: 'blog-comments',
+      owner: 'Lathezero',
+      admin: ['Lathezero'],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || 'ee0c562db4d584e42d653c5eeac6d74a'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Gitalk' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Gitalk' === 'Gitalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
