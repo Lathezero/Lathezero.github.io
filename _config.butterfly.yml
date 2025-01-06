@@ -51,12 +51,12 @@ aside:
   # 分类卡片
   card_categories:
     enable: true        # 是否显示分类卡片
-    limit: 8            # 显示的分类数量限制
+    limit: 6            # 显示的分类数量限制
 
   # 标签卡片
   card_tags:
     enable: true        # 是否显示标签卡片
-    limit: 40           # 显示的标签数量限制
+    limit: 10           # 显示的标签数量限制
 
   # 归档卡片
   card_archives:
@@ -97,7 +97,7 @@ post_copyright:
 # 相关文章推荐
 related_post:
   enable: true         # 是否启用相关文章推荐
-  limit: 6             # 显示数量限制
+  limit: 3             # 显示数量限制
 
 # 文章目录设置
 toc:
