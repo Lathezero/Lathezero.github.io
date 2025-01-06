@@ -4,9 +4,9 @@ date: 2025-01-02 18:54:04
 categories:
   - [后端开发, Java]
   - [开发工具, 框架]
-tags: ['SpringBoot', 'Java', '后端开发', '分层解耦']
+tags: ['SpringBoot', 'Java', '后端开发', '分层解耦', '框架']
 description: SpringBoot中对三层架构进行分层与解耦
-keywords: SpringBoot, Java, 后端开发, 分层解耦
+keywords: SpringBoot, Java, 后端开发, 分层解耦, 框架
 ---
 
 # web开发中的分层解耦
