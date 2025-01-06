@@ -9,8 +9,6 @@ description: 解决 phpstudy 和本地 mysql 不兼容问题
 keywords: MySQL, phpstudy, 后端开发
 ---
 
-# 解决 phpstudy 和本地 mysql 不兼容问题
-
 ## 首先正常安装并且初始化 mysql
 
 1. ### 先删除 mysql 的服务，使用 cmd 管理员模式输入以下指令

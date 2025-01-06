@@ -9,8 +9,6 @@ description: 微信小程序开发iPhone底部因为横杠适配问题解决
 keywords: 微信小程序, iPhone, 横杠适配, 前端开发
 ---
 
-# 微信小程序开发iPhone底部因为横杠适配有问题
-
 在做一个商城小程序开发的时候遇到的一个问题，有些 iphone 手机最下边有一个横条，就像这样：
 
 ![wechatminiapp](images/wechat-miniapp/wechatminiapp.png)

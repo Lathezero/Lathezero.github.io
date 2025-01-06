@@ -6,8 +6,6 @@ tags: ['Markdown', '写作指南', '参考文档']
 keywords: Markdown, 写作指南, 参考文档
 ---
 
-# Markdown 写作指南
-
 ## 文章头部格式 (Frontmatter)
 
 每篇文章都需要包含以下头部信息：
