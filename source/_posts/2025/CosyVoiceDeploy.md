@@ -127,17 +127,18 @@ CosyVoice 是阿里通义实验室开源的多语言语音合成模型，支持�
 
 ### **5. 启动模型**
 
+对于零样本/跨语言推理，请使用 `CosyVoice-300M` 模型。对于 sft 推理，请使用 `CosyVoice-300M-SFT` 模型。对于指令推理，请使用 `CosyVoice-300M-Instruct` 模型。
+
 1. **内置音色生成**：
 
    - 在命令行中运行：
 
      ```bash
-     conda activate cosyvoice
      python webui.py --port 50000 --model_dir pretrained_models/CosyVoice-300M-SFT
      ```
-
+     
    - 打开浏览器访问 `http://127.0.0.1:50000` 使用 Web 界面。
-
+   
 2. **音色克隆**：
 
    - 准备一段 3~10 秒的音频作为音色样本。
