@@ -6,7 +6,7 @@
   <link href="https://lathezero.github.io/atom.xml" rel="self"/>
   
   <link href="https://lathezero.github.io/"/>
-  <updated>2025-03-13T07:44:56.488Z</updated>
+  <updated>2025-04-03T01:24:58.726Z</updated>
   <id>https://lathezero.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UI-TARS 本地部署</title>
+    <link href="https://lathezero.github.io/2025/04/03/OpenModel/UI-TARS/"/>
+    <id>https://lathezero.github.io/2025/04/03/OpenModel/UI-TARS/</id>
+    <published>2025-04-03T01:10:34.000Z</published>
+    <updated>2025-04-03T01:24:58.726Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id><a href="#" class="headerlink" title></a></h2><h3 id="先决条件"><a href="#先决条件" class="headerlink" title="先决条件"></a>先决条件</h3><ul><li><a href="https://nodejs.org/en/download/">Node.js</a> &gt;&#x3D; 20</li><li><a href="https://pnpm.io/installation">pnpm</a> &gt;&#x3D; 9</li></ul><h4 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h4><p>这是一个<a href="https://pnpm.io/workspaces">单存储库</a>项目，包含以下技术：</p><ul><li>跨平台框架：<a href="https://www.electronjs.org/">Electron</a></li><li>界面：<ul><li><a href="https://react.dev/">React</a></li><li><a href="https://vitejs.dev/">Vite</a></li><li><a href="https://v2.chakra-ui.com/">Chakra UI V2</a></li></ul></li><li>状态管理和通信：<ul><li><a href="https://zustand.docs.pmnd.rs/">Zustand</a></li><li><a href="https://github.com/bytedance/UI-TARS-desktop/tree/main/packages/ui-tars/electron-ipc">@ui-tars&#x2F;electron-ipc</a></li></ul></li><li>自动化框架&#x2F;工具：<ul><li><a href="https://nutjs.dev/">nut.js</a></li></ul></li><li>测试框架<ul><li><a href="https://vitest.dev/">Vitest</a></li><li><a href="https://playwright.dev/">Playwright</a></li></ul></li></ul><h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── README.md</span><br><span class="line">├── apps</span><br><span class="line">│   ├── agent-tars</span><br><span class="line">│   │   ├── src</span><br><span class="line">│   │   │   ├── main</span><br><span class="line">│   │   │   ├── preload</span><br><span class="line">│   │   │   ├── renderer</span><br><span class="line">│   │   │   └── vendor</span><br><span class="line">│   └── ui-tars</span><br><span class="line">│       └── src</span><br><span class="line">│           ├── main</span><br><span class="line">│           ├── preload</span><br><span class="line">│           └── renderer</span><br><span class="line">│ </span><br><span class="line"></span><br><span class="line">├── packages</span><br><span class="line">│   ├── agent-infra</span><br><span class="line">│   │   ├── browser</span><br><span class="line">│   │   ├── browser-use</span><br><span class="line">│   │   ├── logger</span><br><span class="line">│   │   ├── mcp-client</span><br><span class="line">│   │   ├── mcp-servers</span><br><span class="line">│   │   ├── search</span><br><span class="line">│   │   └── shared</span><br><span class="line">│   ├── common</span><br><span class="line">│   │   ├── configs</span><br><span class="line">│   │   └── electron-build</span><br><span class="line">│   └── ui-tars</span><br><span class="line">│       ├── action-parser</span><br><span class="line">│       ├── cli</span><br><span class="line">│       ├── electron-ipc</span><br><span class="line">│       ├── operators</span><br><span class="line">│       ├── sdk</span><br><span class="line">│       ├── shared</span><br><span class="line">│       ├── tsconfig.node.json</span><br><span class="line">│       ├── utio</span><br><span class="line">│       └── visualizer</span><br><span class="line">└── vitest.*.mts            <span class="comment"># 单元测试配置</span></span><br></pre></td></tr></table></figure><blockquote><p><strong>注意</strong>：由于 Electron Forge 之前不支持 Pnpm 的提升机制（<a href="https://github.com/electron/forge/issues/2633">electron&#x2F;forge#2633</a>），要求将 <code>src</code> 目录放在顶级目录中，因此 <code>src</code> 目录位于顶级目录而不是 <code>apps/&#123;main,preload,renderer&#125;</code> 目录中。</p></blockquote><h4 id="克隆存储库"><a href="#克隆存储库" class="headerlink" title="克隆存储库"></a>克隆存储库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/bytedance/ui-tars-desktop.git</span><br><span class="line">$ <span class="built_in">cd</span> ui-tars-desktop</span><br></pre></td></tr></table></figure><h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><h4 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pnpm install</span><br></pre></td></tr></table></figure><blockquote><p><strong>注意</strong>：若安装依赖过程中出现报错，请尝试使用以下镜像重新安装，并且使用git bash；将以下内容添加到.npmrc文件后面</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">registry=https://registry.npmmirror.com/</span><br><span class="line">electron_mirror=https://npmmirror.com/mirrors/electron/</span><br><span class="line">electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/</span><br><span class="line">sqlite3_binary_host_mirror=https://npmmirror.com/mirrors/sqlite3/</span><br><span class="line"># sass_binary_site=https://npmmirror.com/mirrors/node-sass/pnpm </span><br><span class="line">chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver/</span><br><span class="line">operadriver_cdnurl=https://npmmirror.com/mirrors/operadriver/</span><br><span class="line">puppeteer_download_base_url=https://npmmirror.com/mirrors/</span><br><span class="line">fse_binary_host_mirror=https://npmmirror.com/mirrors/fsevents</span><br></pre></td></tr></table></figure></blockquote><h4 id="运行应用程序"><a href="#运行应用程序" class="headerlink" title="运行应用程序"></a>运行应用程序</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pnpm run dev:ui-tars    <span class="comment"># 启动 UI-TARS Desktop</span></span><br><span class="line">$ pnpm run dev:agent-tars <span class="comment"># 启动 Agent-TARS Desktop</span></span><br></pre></td></tr></table></figure><p>应用程序启动后，您可以在应用程序内看到 UI-TARS 界面。</p><blockquote><p><strong>注意</strong>：在 MacOS 上，您需要授予运行命令所使用的应用（例如 iTerm2、Terminal）权限。</p></blockquote><h4 id="主进程重载"><a href="#主进程重载" class="headerlink" title="主进程重载"></a>主进程重载</h4><p>默认情况下，<code>pnpm run dev</code> 只有前端热模块替换（HMR）热更新。如果您需要在调试期间同时重载主进程，可以执行 <code>pnpm run dev:w</code>。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pnpm run dev:w</span><br></pre></td></tr></table></figure><h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p>在当前系统中运行 <code>pnpm run build</code>，它将输出到 <code>out/*</code> 目录中。</p><p>要构建其他系统的产品，请运行：</p><ul><li>Mac x64：<code>pnpm run publish:mac-x64</code></li><li>Mac ARM：<code>pnpm run publish:mac-arm64</code></li><li>Windows x64：<code>pnpm run publish:win32</code></li><li>Windows ARM：<code>pnpm run publish:win32-arm64</code></li></ul>]]></content>
+    
+    
+    <summary type="html">UI-TARS 本地部署</summary>
+    
+    
+    
+    <category term="Agent" scheme="https://lathezero.github.io/categories/Agent/"/>
+    
+    <category term="UI-TARS" scheme="https://lathezero.github.io/categories/Agent/UI-TARS/"/>
+    
+    
+    <category term="Agent" scheme="https://lathezero.github.io/tags/Agent/"/>
+    
+    <category term="UI-TARS" scheme="https://lathezero.github.io/tags/UI-TARS/"/>
+    
+  </entry>
   
   <entry>
     <title>OpenManus本地部署</title>
@@ -64,9 +89,9 @@
     <category term="框架" scheme="https://lathezero.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E6%A1%86%E6%9E%B6/"/>
     
     
-    <category term="Java" scheme="https://lathezero.github.io/tags/Java/"/>
-    
     <category term="SpringBoot" scheme="https://lathezero.github.io/tags/SpringBoot/"/>
+    
+    <category term="Java" scheme="https://lathezero.github.io/tags/Java/"/>
     
   </entry>
   
@@ -97,9 +122,9 @@
     
     <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
-    <category term="MyBatis" scheme="https://lathezero.github.io/tags/MyBatis/"/>
-    
     <category term="框架" scheme="https://lathezero.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+    <category term="MyBatis" scheme="https://lathezero.github.io/tags/MyBatis/"/>
     
   </entry>
   
@@ -151,15 +176,15 @@
     <category term="框架" scheme="https://lathezero.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E6%A1%86%E6%9E%B6/"/>
     
     
+    <category term="SpringBoot" scheme="https://lathezero.github.io/tags/SpringBoot/"/>
+    
     <category term="Java" scheme="https://lathezero.github.io/tags/Java/"/>
     
     <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
-    <category term="框架" scheme="https://lathezero.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
-    
-    <category term="SpringBoot" scheme="https://lathezero.github.io/tags/SpringBoot/"/>
-    
     <category term="分层解耦" scheme="https://lathezero.github.io/tags/%E5%88%86%E5%B1%82%E8%A7%A3%E8%80%A6/"/>
+    
+    <category term="框架" scheme="https://lathezero.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
@@ -183,39 +208,6 @@
     <category term="写作指南" scheme="https://lathezero.github.io/tags/%E5%86%99%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
     
     <category term="参考文档" scheme="https://lathezero.github.io/tags/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决 phpstudy 和本地 mysql 不兼容问题</title>
-    <link href="https://lathezero.github.io/2024/12/23/2024/mysql_and_phpstudy/"/>
-    <id>https://lathezero.github.io/2024/12/23/2024/mysql_and_phpstudy/</id>
-    <published>2024-12-23T00:00:00.000Z</published>
-    <updated>2025-01-06T13:56:33.230Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="首先正常安装并且初始化-mysql"><a href="#首先正常安装并且初始化-mysql" class="headerlink" title="首先正常安装并且初始化 mysql"></a>首先正常安装并且初始化 mysql</h2><ol><li><h3 id="先删除-mysql-的服务，使用-cmd-管理员模式输入以下指令"><a href="#先删除-mysql-的服务，使用-cmd-管理员模式输入以下指令" class="headerlink" title="先删除 mysql 的服务，使用 cmd 管理员模式输入以下指令"></a>先删除 mysql 的服务，使用 cmd 管理员模式输入以下指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc delete mysql</span><br></pre></td></tr></table></figure><p>成功后弹出 “[SC] DeleteService SUCCESS”</p><p>注：若安装 mysql 后没有运行 <code>bash mysqld -install</code>命令，则跳过第一步</p></li><li><h3 id="注册新的-mysql-服务"><a href="#注册新的-mysql-服务" class="headerlink" title="注册新的 mysql 服务"></a>注册新的 mysql 服务</h3><ol><li><p>打开 cmd 管理员模式，导航到 mysql 的 bin 文件目录，例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> D:\mysql-9.1.0-winx64\bin</span><br></pre></td></tr></table></figure><p>或者直接打开 bin 文件，然后在上面文件路径中输入 cmd 然后进入到 cmd 界面</p></li><li><p>注册 mysql 服务，并且为服务起一个新名字，例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld -install mysql9</span><br></pre></td></tr></table></figure><p>成功后弹出 “Service successfully installed”</p></li></ol></li><li><h3 id="试运行-mysql"><a href="#试运行-mysql" class="headerlink" title="试运行 mysql"></a>试运行 mysql</h3><p>输入命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql9</span><br></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-    <summary type="html">解决 phpstudy 和本地 mysql 不兼容问题</summary>
-    
-    
-    
-    <category term="后端开发" scheme="https://lathezero.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="数据库" scheme="https://lathezero.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    <category term="MySQL" scheme="https://lathezero.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
-    
-    <category term="问题解决" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
-    
-    <category term="环境配置" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-    
-    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="MySQL" scheme="https://lathezero.github.io/tags/MySQL/"/>
-    
-    <category term="phpstudy" scheme="https://lathezero.github.io/tags/phpstudy/"/>
     
   </entry>
   
@@ -249,6 +241,39 @@
     <category term="MySQL" scheme="https://lathezero.github.io/tags/MySQL/"/>
     
     <category term="数据库" scheme="https://lathezero.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决 phpstudy 和本地 mysql 不兼容问题</title>
+    <link href="https://lathezero.github.io/2024/12/23/2024/mysql_and_phpstudy/"/>
+    <id>https://lathezero.github.io/2024/12/23/2024/mysql_and_phpstudy/</id>
+    <published>2024-12-23T00:00:00.000Z</published>
+    <updated>2025-01-06T13:56:33.230Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="首先正常安装并且初始化-mysql"><a href="#首先正常安装并且初始化-mysql" class="headerlink" title="首先正常安装并且初始化 mysql"></a>首先正常安装并且初始化 mysql</h2><ol><li><h3 id="先删除-mysql-的服务，使用-cmd-管理员模式输入以下指令"><a href="#先删除-mysql-的服务，使用-cmd-管理员模式输入以下指令" class="headerlink" title="先删除 mysql 的服务，使用 cmd 管理员模式输入以下指令"></a>先删除 mysql 的服务，使用 cmd 管理员模式输入以下指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc delete mysql</span><br></pre></td></tr></table></figure><p>成功后弹出 “[SC] DeleteService SUCCESS”</p><p>注：若安装 mysql 后没有运行 <code>bash mysqld -install</code>命令，则跳过第一步</p></li><li><h3 id="注册新的-mysql-服务"><a href="#注册新的-mysql-服务" class="headerlink" title="注册新的 mysql 服务"></a>注册新的 mysql 服务</h3><ol><li><p>打开 cmd 管理员模式，导航到 mysql 的 bin 文件目录，例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> D:\mysql-9.1.0-winx64\bin</span><br></pre></td></tr></table></figure><p>或者直接打开 bin 文件，然后在上面文件路径中输入 cmd 然后进入到 cmd 界面</p></li><li><p>注册 mysql 服务，并且为服务起一个新名字，例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld -install mysql9</span><br></pre></td></tr></table></figure><p>成功后弹出 “Service successfully installed”</p></li></ol></li><li><h3 id="试运行-mysql"><a href="#试运行-mysql" class="headerlink" title="试运行 mysql"></a>试运行 mysql</h3><p>输入命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql9</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <summary type="html">解决 phpstudy 和本地 mysql 不兼容问题</summary>
+    
+    
+    
+    <category term="后端开发" scheme="https://lathezero.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="数据库" scheme="https://lathezero.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="MySQL" scheme="https://lathezero.github.io/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+    
+    <category term="问题解决" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
+    <category term="环境配置" scheme="https://lathezero.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="MySQL" scheme="https://lathezero.github.io/tags/MySQL/"/>
+    
+    <category term="phpstudy" scheme="https://lathezero.github.io/tags/phpstudy/"/>
     
   </entry>
   
@@ -304,11 +329,11 @@
     <category term="构建工具" scheme="https://lathezero.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="Maven" scheme="https://lathezero.github.io/tags/Maven/"/>
-    
     <category term="Java" scheme="https://lathezero.github.io/tags/Java/"/>
     
     <category term="后端开发" scheme="https://lathezero.github.io/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Maven" scheme="https://lathezero.github.io/tags/Maven/"/>
     
     <category term="项目管理" scheme="https://lathezero.github.io/tags/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
     
